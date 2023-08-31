@@ -59,7 +59,7 @@ let checkwinner = () => {
             for (i = 0; i < 9; i++) {
                 if (i != element[0] && i != element[1] && i != element[2] && span_val[i].innerHTML !== '') {
                     // span_val[i].innerHTML = `<span style='color : gray'>${span_val[i].innerHTML}</span>`;
-                    span_val[i].style.opacity = 0.3;
+                    span_val[i].style.color = 'grey';
                     // span_val[i].classList.toggle('hidden');
                 }
             }
@@ -80,11 +80,13 @@ let checkwinner = () => {
         borderblink = document.getElementsByClassName('box');
         for (i = 0; i < 9; i++) {
             // span_val[i].innerHTML = `<span style='color : gray'>${span_val[i].innerHTML}</span>`
-            span_val[i].style.opacity = 0.3;
-            borderblink[i].classList.add('blink-border');
+            span_val[i].style.color = 'grey';
+            console.log("inside reset");
+            borderblink[i].classList.add('blinkborder');
         }
     }
 };
+
 
 reset.addEventListener('click', () => {
     let val = document.getElementsByClassName('val');
@@ -97,9 +99,11 @@ reset.addEventListener('click', () => {
     turn = 'X';
     borderblink = document.getElementsByClassName('box');
     for (i = 0; i < 9; i++) {
-        span_val[i].style.opacity = 1;
+        // span_val[i].style.opacity = 1;
+        let span_val = document.getElementsByClassName('val');
+        span_val[i].style.color = 'black';
         span_val[i].classList.remove('blink');
-        borderblink[i].classList.remove('blink-border');
+        borderblink[i].classList.remove('blinkborder');
     }
     // stopConfetti();
 });
