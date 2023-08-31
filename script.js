@@ -95,6 +95,7 @@ reset.addEventListener('click', () => {
     // console.log("reset");
     document.querySelector('#display_turn').innerHTML = "Turn for : X";
     turn = 'X';
+    borderblink = document.getElementsByClassName('box');
     for (i = 0; i < 9; i++) {
         span_val[i].style.opacity = 1;
         span_val[i].classList.remove('blink');
