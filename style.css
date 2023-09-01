@@ -10,6 +10,10 @@
     padding: 0;
 }
 
+body {
+    background-color: rgb(255, 252, 249);
+}
+
 .navbar {
     background-color: rgb(16, 7, 48);
     color: white;
@@ -36,8 +40,8 @@
 
 .game {
     display: grid;
-    grid-template-columns: repeat(3, 10vw);
-    grid-template-rows: repeat(3, 10vw);
+    grid-template-columns: repeat(3, 11vw);
+    grid-template-rows: repeat(3, 11vw);
     /* font-family: 'Kanit', sans-serif; */
     /* font-family: 'Balsamiq Sans', cursive; */
     font-family: 'Finger Paint', cursive;
@@ -100,17 +104,14 @@
     margin-top: 23px;
 }
 
-.hidden {
-    /* color: white;
-    background-color: black;
-    display: none; */
-    opacity: 0;
+.gameInfo button:hover {
+    box-shadow: 0px 2px 7px 2px #717070;
 }
 
 .blink {
     animation: blink 0.3s ease-in-out;
     animation-iteration-count: 3;
-    transition: opacity 0.3s;
+    /* transition: opacity 0.3s; */
     /* border: 2px solid red; */
 }
 
@@ -123,6 +124,7 @@
     0% {
         border-color: black;
     }
+
     100% {
         border-color: white;
     }
@@ -130,10 +132,115 @@
 
 @keyframes blink {
     0% {
-        opacity: 0;
+        /* color: black; */
+        opacity: 1;
     }
 
     100% {
-        opacity: 1;
+        /* color: white; */
+        opacity: 0;
     }
 }
+
+.trans {
+    animation-name: xyz;
+    animation-duration: 0.07s;
+    animation-iteration-count: 1;
+    /* animation-timing-function: ease-out; */
+    /* animation-fill-mode: forwards; */
+    /* font-size: 7.5vw; */
+}
+
+@keyframes xyz {
+    /* 0% {
+        font-size: 1.5rem;
+    } */
+
+    0% {
+        font-size: 6vw;
+    }
+
+    50% {
+        font-size: 9vw;
+    }
+
+    100% {
+        font-size: 7.5vw;
+    }
+}
+
+@media only screen and (max-width : 800px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    .section {
+        margin: 40px 0px;
+    }
+
+    .game {
+        grid-template-columns: repeat(3, 16vw);
+        grid-template-rows: repeat(3, 16vw);
+        font-family: 'Finger Paint', cursive;
+    }
+
+    .box {
+        border-width: 2px;
+        font-size: 10vw;
+    }
+
+    .gameInfo {
+        margin: 0;
+        padding: 0;
+    }
+
+    .gameInfo h2 {
+        font-size: 3vw;
+        padding: 6px;
+        padding-left: 0px;
+    }
+
+    .gameInfo p {
+        font-size: 2.6vw;
+    }
+
+    .gameInfo button {
+        margin-top: 7px;
+        padding: 2px 12px;
+        border-radius: 30px;
+        font-size: 2.5vw;
+    }
+}
+
+@keyframes xyz {
+
+    0% {
+        font-size: 9vw;
+    }
+
+    50% {
+        font-size: 11vw;
+    }
+
+    100% {
+        font-size: 10vw;
+    }
+}
+
+
+/* @media only screen and (max-width : 500px) {
+    #item1 {
+        display: block;
+        background-color: cyan;
+    }
+} */
+
+/* @media only screen and (max-width : 1000px) and (min-width : 500px) {
+    #item2 {
+        display: block;
+        background-color: orange;
+    }
+} */
