@@ -1,53 +1,260 @@
-<!DOCTYPE html>
-<html lang="en">
+@import url('https://fonts.googleapis.com/css2?family=Krub:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krub:wght@200&family=Poppins:ital,wght@0,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Kanit&family=Krub:wght@200&family=Poppins:ital,wght@0,300;1,400&display=swap');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TicTacTo</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <style src="style.css"></style> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Finger+Paint&family=Kanit&family=Krub:wght@200&family=Poppins:ital,wght@0,300;1,400&display=swap"
-        rel="stylesheet">
-    <!-- <script src="confetti/confetti.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script> -->
+/* import brush font */
+/* @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Finger+Paint&family=Kanit&family=Krub:wght@200&family=Poppins:ital,wght@0,300;1,400&display=swap'); */
 
-    <!-- <script src="confetti/simple_confetti.js"></script> -->
-    <!-- <script src="confetti/simple_confetti.js"></script> -->
+* {
+    margin: 0;
+    padding: 0;
+}
 
-</head>
+body {
+    background-color: rgb(255, 252, 249);
+}
 
-<body>
+.navbar {
+    background-color: rgb(16, 7, 48);
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    list-style-type: none;
+    /* font-family: 'Krub', sans-serif; */
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: 'Finger Paint', cursive;
+}
 
-    <nav class="navbar">
-        <li>TIC-TAC-TOE</li>
-    </nav>
-    <!-- <canvas></canvas> -->
-    <div class="container">
-        <div class="game section">
-            <div class="box bl-0 bt-0" id="box1"><span class="val"></span></div>
-            <div class="box bt-0"><span class="val"></span></div>
-            <div class="box bt-0 br-0"><span class="val"></span></div>
-            <div class="box bl-0"><span class="val"></span></div>
-            <div class="box "><span class="val"></span></div>
-            <div class="box br-0"><span class="val"></span></div>
-            <div class="box bl-0 bb-0"><span class="val"></span></div>
-            <div class="box bb-0"><span class="val"></span></div>
-            <div class="box br-0 bb-0"><span class="val"></span></div>
-        </div>
-        <div class="gameInfo section">
-            <h2>TIC-TAC-TOE</h2>
-            <p id="display_turn">Turn for : X</p>
-            <button id="reset">Reset</button>
-        </div>
+.navbar li {
+    padding: 10px 23px;
+}
 
-        <script src="script.js"></script>
-    </div>
+.container {
+    display: flex;
+    justify-content: center;
+    /* background-color: antiquewhite; */
+    margin: 40px 0px;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 12.5rem);
+    grid-template-rows: repeat(3, 12.5rem);
+    /* font-family: 'Kanit', sans-serif; */
+    /* font-family: 'Balsamiq Sans', cursive; */
+    font-family: 'Finger Paint', cursive;
+}
+
+.box {
+    font-size: 8rem;
+    border: 3px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.box:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+.bl-0 {
+    border-left: 0;
+}
+
+.br-0 {
+    border-right: 0;
+}
+
+.bb-0 {
+    border-bottom: 0;
+}
+
+.bt-0 {
+    border-top: 0;
+}
+
+.gameInfo {
+    margin-left: 90px;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    /* font-family: 'Balsamiq Sans', cursive; */
+    font-family: 'Finger Paint', cursive;
+}
+
+.gameInfo h2 {
+    /* margin: 12px; */
+    padding: 22px;
+    font-size: 2rem;
+    padding-left: 0;
+}
+
+.gameInfo p {
+    font-size: 1.5rem;
+}
+
+.gameInfo button {
+    background-color: aliceblue;
+    border-radius: 8px;
+    font-family: 'Finger Paint', cursive;
+    font-size: 1.2rem;
+    padding: 9px 30px;
+    cursor: pointer;
+    margin-top: 23px;
+}
+
+.gameInfo button:hover {
+    box-shadow: 0px 2px 7px 2px #717070;
+}
+
+.blink {
+    animation: blink 0.3s ease-in-out;
+    animation-iteration-count: 3;
+    /* transition: opacity 0.3s; */
+    /* border: 2px solid red; */
+}
+
+.blinkborder {
+    animation: blink-border 0.3s ease-in-out;
+    animation-iteration-count: 3;
+}
+
+@keyframes blink-border {
+    0% {
+        border-color: black;
+    }
+
+    100% {
+        border-color: white;
+    }
+}
+
+@keyframes blink {
+    0% {
+        /* color: black; */
+        opacity: 1;
+    }
+
+    100% {
+        /* color: white; */
+        opacity: 0;
+    }
+}
+
+.trans {
+    animation-name: xyz;
+    animation-duration: 0.07s;
+    animation-iteration-count: 1;
+    /* animation-timing-function: ease-out; */
+    /* animation-fill-mode: forwards; */
+    /* font-size: 7.5vw; */
+}
+
+@keyframes xyz {
+    /* 0% {
+        font-size: 1.5rem;
+    } */
+
+    0% {
+        font-size: 6vw;
+    }
+
+    50% {
+        font-size: 9vw;
+    }
+
+    100% {
+        font-size: 7.5vw;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .game {
+        grid-template-columns: repeat(3, 25vw);
+        grid-template-rows: repeat(3, 25vw);
+        font-family: 'Finger Paint', cursive;
+        /* background-color: black; */
+    }
+
+    .box {
+        font-size: 15vw;
+    }
+
+}
+
+@media only screen and (max-width : 950px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    .section {
+        margin: 40px 0px;
+    }
+
+    .game {
+        /* grid-template-columns: repeat(3, );
+        grid-template-rows: repeat(3, 12rem); */
+        font-family: 'Finger Paint', cursive;
+    }
+
+    .box {
+        border-width: 2px;
+        /* font-size: 15vw; */
+    }
+
+    .gameInfo {
+        margin: 0;
+        padding: 0;
+    }
+
+    .gameInfo h2 {
+        font-size: 2rem;
+        padding: 6px;
+        padding-left: 0px;
+    }
+
+    .gameInfo p {
+        font-size: 1.5rem;
+    }
+
+    .gameInfo button {
+        margin-top: 7px;
+        padding: 2px 12px;
+        border-radius: 30px;
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes xyz {
+
+    0% {
+        font-size: 9vw;
+    }
+
+    50% {
+        font-size: 11vw;
+    }
+
+    100% {
+        font-size: 10vw;
+    }
+}
 
 
-</body>
+/* @media only screen and (max-width : 500px) {
+    #item1 {
+        display: block;
+        background-color: cyan;
+    }
+} */
 
-</html>
+/* @media only screen and (max-width : 1000px) and (min-width : 500px) {
+    #item2 {
+        display: block;
+        background-color: orange;
+    }
+} */
